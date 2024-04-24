@@ -13,6 +13,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import br.com.movieapp.ui.theme.MovieAppTheme
 
 class MainActivity : ComponentActivity() {
+
+    val apiKey = BuildConfig.API_KEY
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -34,7 +36,7 @@ fun Greeting(name: String) {
     Text(text = "Hello $name!")
 }
 
-@Preview(showBackground = true)
+@Preview(showSystemUi= true)
 @Composable
 fun DefaultPreview() {
     MovieAppTheme {

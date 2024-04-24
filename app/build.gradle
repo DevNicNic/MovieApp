@@ -5,6 +5,11 @@ plugins {
     id 'kotlin-kapt'
 }
 
+def apiKeiPropertiesFile = rootProject.file("apikey.properties") // esta linha esta apontando para o arquivo chamado apikey.properteis que esta na raiz do nosso projetola no project.
+def apiKeyProperties = new Properties() // aqui estamos criando uma instancia dessa classe Properteis, ela vai ler as propriedades que estão dentro do arquivo apikey.properteis.
+apiKeyProperties.load(new FileInputStream(apiKeiPropertiesFile)) // é através dessa linha que vamos ler o arquivo
+
+
 android {
     namespace 'br.com.movieapp'
     compileSdk 33
@@ -20,7 +25,12 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+        buildConfigField "String", "API_KEY", apiKeyProperties['API_KEY'] //esta linha esta definindo uma variavel do arquivo de construção do buildConfigi
+        buildConfigField "String", "BASE_URL", apiKeyProperties['BASE_URL']// elas vão armazenar nossa chave da api e nossas urls
+        buildConfigField "String", "BASE_URL_IMAGE", apiKeyProperties['BASE_URL_IMAGE']
+
     }
+
 
     buildTypes {
         release {
