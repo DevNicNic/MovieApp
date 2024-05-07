@@ -11,7 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import br.com.movieapp.ui.theme.MovieAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint // vai indicar para o hilt que lee deve gerar o código necessário para injeçao de independencia nessa classe
 class MainActivity : ComponentActivity() {
 
     val apiKey = BuildConfig.API_KEY
